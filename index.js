@@ -1,9 +1,5 @@
 
 var Writable = require("stream").Writable
-  , extend   = require("xtend")
-  , defaults = {
-      objectMode: true
-    }
 
 if (!Writable) {
   Writable = require("readable-stream").Writable;
@@ -19,8 +15,6 @@ function CallbackStream(options, callback) {
     callback = options
     options = {}
   }
-
-  options = extend(defaults, options)
 
   Writable.call(this, options)
 
