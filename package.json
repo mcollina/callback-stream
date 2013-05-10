@@ -4,7 +4,7 @@
   "description": "A pipeable stream that calls your callback",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/tap test.js"
+    "test": "./node_modules/.bin/tape test.js"
   },
   "website": "https://github.com/mcollina/callback-stream",
   "repository": {
@@ -24,6 +24,6 @@
     "readable-stream": "~1.0.2"
   },
   "devDependencies": {
-    "tap": "~0.4.2"
+    "tape": "~1.0.2"
   }
 }
