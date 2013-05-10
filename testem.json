@@ -1,0 +1,16 @@
+{
+    "before_tests": "browserify index.js test.js > test-bundle.js"
+
+  , "launchers": {
+      "Mocha": {
+          "command": "./node_modules/.bin/tape test-bundle.js"
+        , "protocol": "tap"
+      }
+    }
+
+  , "src_files": [
+      "test-bundle.js"
+    ]
+
+  , "after_tests": "rm test-bundle.js"
+}
