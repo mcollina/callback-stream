@@ -1,29 +1,29 @@
 {
-    "name": "callback-stream"
-  , "version": "1.0.0"
-  , "description": "A pipeable stream that calls your callback"
-  , "main": "index.js"
-  , "scripts": {
-      "test": "./node_modules/.bin/tape test.js"
-    }
-  , "website": "https://github.com/mcollina/callback-stream"
-  , "repository": {
-      "type": "git",
-      "url": "https://github.com/mcollina/callback-stream.git"
-    }
-  , "bugs": {
-      "url": "http://github.com/mcollina/callback-stream/issues"
-    }
-  , "keywords": [
-      "callback",
-      "stream"
-    ]
-  , "author": "Matteo Collina <hello@matteocollina.com>"
-  , "license": "MIT"
-  , "dependencies": {
-      "readable-stream": "~1.0.2"
-    }
-  , "devDependencies": {
-      "tape": "~1.0.2"
-    }
+  "name": "callback-stream",
+  "version": "1.0.0",
+  "description": "A pipeable stream that calls your callback",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tap test.js"
+  },
+  "website": "https://github.com/mcollina/callback-stream",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcollina/callback-stream.git"
+  },
+  "bugs": {
+    "url": "http://github.com/mcollina/callback-stream/issues"
+  },
+  "keywords": [
+    "callback",
+    "stream"
+  ],
+  "author": "Matteo Collina <hello@matteocollina.com>",
+  "license": "MIT",
+  "dependencies": {
+    "readable-stream": "~1.0.2"
+  },
+  "devDependencies": {
+    "tap": "~0.4.2"
+  }
 }

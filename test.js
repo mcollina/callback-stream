@@ -1,5 +1,5 @@
 
-var test = require("tape").test
+var test = require("tap").test
   , callback = require("./")
   , fs = require("fs")
 
