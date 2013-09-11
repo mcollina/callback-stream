@@ -1,6 +1,6 @@
 {
   "name": "callback-stream",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A pipeable stream that calls your callback",
   "main": "index.js",
   "scripts": {
