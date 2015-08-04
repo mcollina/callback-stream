@@ -46,3 +46,12 @@ test('is pipeable', function (t) {
 
   read.pipe(write)
 })
+
+test('callback.obj shortcut for objectMode', function (t) {
+  var stream = callback.obj(function (err, results) {
+    t.deepEqual(results, ['hello'], 'should return the ending value')
+    t.end()
+  })
+
+  stream.end('hello')
+})

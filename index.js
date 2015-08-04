@@ -37,4 +37,15 @@ CallbackStream.prototype._write = function (data, encoding, done) {
   done()
 }
 
+CallbackStream.obj = function (options, callback) {
+  if (typeof options === 'function') {
+    callback = options
+    options = {}
+  }
+
+  options.objectMode = true
+
+  return new CallbackStream(options, callback)
+}
+
 module.exports = CallbackStream

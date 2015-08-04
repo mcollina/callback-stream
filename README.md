@@ -4,29 +4,32 @@ CallbackStream
 [![Build
 Status](https://travis-ci.org/mcollina/callback-stream.png)](https://travis-ci.org/mcollina/callback-stream)
 
-It is an idiot-proof variant of the
-[callback-stream](https://github.com/maxogden/node-concat-stream)
-package.
+It is a safe variant of the
+[concat-stream](https://github.com/maxogden/node-concat-stream)
+package that _will always return an array_.
 
 It does everything callback-stream does, minus the concatenation.
 In fact, it just callbacks you with an array containing your
 good stuff.
 
 It is based on the Stream 2 API, but it also works on node v0.8.
+It also support Stream 3, which is bundled with node v0.12 and iojs.
 
 ## Installation
 
 ```
-$: npm install callback-stream --save
+npm install callback-stream --save
 ```
 
 ## Pipe usage
 
-```
+```js
 var callback = require('callback-stream')
-  , fs = require('fs')
-  , read = fs.createReadStream('readme.md')
-  , write = callback(function(err, data) {})
+var fs = require('fs')
+var read = fs.createReadStream('readme.md')
+var write = callback(function (err, data) {
+  console.log(err, data)
+})
 
 read.pipe(write)
 ```
@@ -35,11 +38,10 @@ read.pipe(write)
 
 ```
 var callback = require('callback-stream')
-  , opts = { objectMode: true }
-  , write = callback(opts, function(err, data) {
-      // this will print ['hello', 'world']
-      console.log(data)
-    })
+var write = callback.obj(function (err, data) {
+  // this will print ['hello', 'world']
+  console.log(data)
+})
 
 write.write('hello')
 write.write('world')
@@ -60,7 +62,7 @@ write.end()
 
 ## LICENSE - "MIT License"
 
-Copyright (c) 2013 Matteo Collina, http://matteocollina.com
+Copyright (c) 2013-2015 Matteo Collina, http://matteocollina.com
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
