@@ -1,4 +1,9 @@
 language: node_js
+sudo: false
 node_js:
   - 0.8
   - "0.10"
+  - "0.12"
+  - "iojs"
+before_install:
+  - (node -v | grep v0.8 && npm install npm@1.4 -g) || echo 'npm upgrade not needed'
