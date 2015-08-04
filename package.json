@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "inherits": "^2.0.1",
-    "readable-stream": "> 1.0.0 < 2.0.0"
+    "readable-stream": "> 1.0.0 < 3.0.0"
   },
   "devDependencies": {
     "pre-commit": "^1.1.1",
