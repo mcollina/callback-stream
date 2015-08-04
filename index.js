@@ -1,17 +1,14 @@
+'use strict'
 
-var Writable = require("stream").Writable
+var Writable = require('readable-stream').Writable
+var inherits = require('inherits')
 
-if (!Writable) {
-  Writable = require("readable-stream").Writable;
-}
-
-function CallbackStream(options, callback) {
-
+function CallbackStream (options, callback) {
   if (!(this instanceof CallbackStream)) {
     return new CallbackStream(options, callback)
   }
 
-  if (typeof options === "function") {
+  if (typeof options === 'function') {
     callback = options
     options = {}
   }
@@ -19,23 +16,25 @@ function CallbackStream(options, callback) {
   Writable.call(this, options)
 
   this.results = []
-  this.on("finish", function() {
-    callback(null, this.results)
-  })
+  this.callback = callback
 
-  this.once("pipe", function(source) {
-    source.on("error", callback);
-  })
+  this.on('finish', deliversCallback)
+  this.once('pipe', handlePipe)
 }
 
-CallbackStream.prototype = Object.create(
-  Writable.prototype,
-  { constructor: { value: CallbackStream } }
-);
+function deliversCallback () {
+  this.callback(null, this.results)
+}
 
-CallbackStream.prototype._write = function(data, encoding, done) {
+function handlePipe (source) {
+  source.on('error', this.callback)
+}
+
+inherits(CallbackStream, Writable)
+
+CallbackStream.prototype._write = function (data, encoding, done) {
   this.results.push(data)
   done()
-};
+}
 
 module.exports = CallbackStream
