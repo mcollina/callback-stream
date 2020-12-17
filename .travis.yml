@@ -1,9 +1,21 @@
 language: node_js
 sudo: false
+arch:
+  - amd64
+  - ppc64le
 node_js:
   - 0.8
   - "0.10"
   - "0.12"
+  - "14"
   - "iojs"
+jobs:
+  exclude:
+     - nodejs: 0.8
+       arch: ppc64le
+     - nodejs: 0.10
+       arch: ppc64le
+     - nodejs: 0.12
+       arch: ppc64le
 before_install:
   - (node -v | grep v0.8 && npm install npm@1.4 -g) || echo 'npm upgrade not needed'
